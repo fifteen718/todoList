@@ -1,0 +1,130 @@
+* {
+  padding: 0;
+  margin: 0;
+  outline: none;
+}
+
+#app {
+  width: 300px;
+  height: 500px;
+  background-color: #8ea5eb;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -250px 0 0 -150px;
+}
+
+label,button,li,h1 {
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  -khtml-user-select: none;
+  user-select: none;
+  cursor: default;
+}
+
+h1 {
+  color: white;
+  text-align: center;
+  font-family: Arial;
+  padding-top: 10px;
+}
+
+input {
+  height: 24px;
+  width: 160px;
+  border: 1px solid #DCDCDC;
+  margin: 10px 0 12px 70px;
+  text-indent: 3px;
+}
+
+.addLabel {
+  width: 24px;
+  height: 24px;
+  display: inline-block;
+  background: #17C184;
+  text-align: center;
+  line-height: 20px;
+  color: white;
+  font-size: 18px;
+  border-radius: 2px;
+  font-weight: bold;
+}
+
+.addLabel:hover {
+  background: #41cb83;
+}
+
+.addLabel:active {
+  background: #00b166;
+}
+
+.clearBtn {
+  display: block;
+  width: 80px;
+  height: 24px;
+  margin: 10px auto;
+  background: #ff5448;
+  border: none;
+  color: white;
+  font-size: 12px;
+  line-height: 24px;
+  border-radius: 2px;
+}
+
+.clearBtn:hover {
+  background: #ff7870;
+}
+
+.clearBtn:active {
+  background: #f5473c;
+}
+
+.deleteLabel {
+  float: right;
+  width: 24px;
+  height: 24px;
+  display: block;
+  text-align: center;
+  line-height: 20px;
+  color: #ff5448;
+  font-size: 18px;
+  border-radius: 2px;
+  font-weight: bold;
+  text-indent: 1px;
+  margin: 6px;
+}
+
+.deleteLabel:hover {
+  cursor: pointer;
+  color: white;
+  background: #ff7870;
+}
+
+.deleteLabel:active {
+  background: #f5473c;
+}
+
+ul {
+  height: 361px;
+  overflow-y: auto;
+}
+
+ul li {
+  list-style: none;
+  margin: 12px 0;
+  cursor: default;
+  color: white;
+  background-color: #17C184;
+  font-size: 16px;
+  line-height: 36px;
+  text-indent: 8px
+}
+
+ul li:first-child {
+  margin-top: 20px
+}
+
+.finished {
+  background-color: #DCDCDC;
+}

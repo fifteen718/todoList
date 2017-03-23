@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Todo List</title>
+  <link rel="stylesheet" type="text/css" href="phone.css"/>
+</head>
+
+<body>
+  <div id="app">
+    <div class="topDiv">
+      <h1>{{title}}</h1>
+      <div class="addWrap">
+        <input v-model="newItem" @keyup.enter="addNew"/>
+        <label class="addLabel" @click="addNew">+</label>
+      </div>
+      <button class="clearBtn" @click="clearAll">一键清空</button>
+    </div>
+    <ul>
+      <li v-for="item in items" :class="{finished:item.isFinished}" @click="toggleFinish(item)">
+        {{item.label}}
+        <label class="deleteLabel" @click="deleteOne($index)">×</label>
+      </li>
+    </ul>
+  </div>
+
+  <script type="text/javascript" src="vue.min.js"></script>
+  <script type="text/javascript" src="main.js"></script>
+
+</body>
+</html>
