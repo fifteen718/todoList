@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Todo List</title>
+  <script type="text/javascript" src="vue.min.js"></script>
+  <style type="text/css">
+    * {
+      padding: 0;
+      margin: 0;
+      outline: none;
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+
+    #app {
+      width: 300px;
+      height: 500px;
+      margin: 20px auto;
+      background-color: #8ea5eb;
+    }
+
+    h1 {
+      color: white;
+      text-align: center;
+      font-family: Arial;
+      padding-top: 10px;
+    }
+
+    input {
+      height: 24px;
+      width: 160px;
+      border: 1px solid #DCDCDC;
+      margin: 10px 0 12px 70px;
+      text-indent: 3px;
+    }
+
+    .addLabel {
+      width: 24px;
+      height: 24px;
+      display: inline-block;
+      background: #17C184;
+      text-align: center;
+      line-height: 20px;
+      color: white;
+      font-size: 18px;
+      border-radius: 2px;
+      font-weight: bold;
+    }
+
+    .addLabel:hover {
+      background: #41cb83;
+    }
+
+    .addLabel:active {
+      background: #00b166;
+    }
+
+    .clearBtn {
+      display: block;
+      width: 80px;
+      height: 24px;
+      margin: 10px auto;
+      background: #ff5448;
+      border: none;
+      color: white;
+      font-size: 12px;
+      line-height: 24px;
+      border-radius: 2px;
+    }
+
+    .clearBtn:hover {
+      background: #ff7870;
+    }
+
+    .clearBtn:active {
+      background: #f5473c;
+    }
+
+    .deleteLabel {
+      float: right;
+      width: 24px;
+      height: 24px;
+      display: block;
+      text-align: center;
+      line-height: 20px;
+      color: #ff5448;
+      font-size: 18px;
+      border-radius: 2px;
+      font-weight: bold;
+      text-indent: 1px;
+      margin: 6px;
+    }
+
+    .deleteLabel:hover {
+      cursor: pointer;
+      color: white;
+      background: #ff7870;
+    }
+
+    .deleteLabel:active {
+      background: #f5473c;
+    }
+
+    ul {
+      height: 361px;
+      overflow-y: auto;
+    }
+
+    ul li {
+      list-style: none;
+      margin: 12px 0;
+      cursor: default;
+      color: white;
+      background-color: #17C184;
+      font-size: 16px;
+      line-height: 36px;
+      text-indent: 8px
+    }
+
+    ul li:first-child {
+      margin-top: 20px
+    }
+
+    .finished {
+      background-color: #DCDCDC;
+    }
+  </style>
+</head>
+
+<body>
+<div id="app">
+  <h1>{{title}}</h1>
+  <input v-model="newItem" @keyup.enter="addNew">
+  <label class="addLabel" @click="addNew">+</label>
+  <button class="clearBtn" @click="clearAll">一键清空</button>
+  <ul>
+    <li v-for="item in items" :class="{finished:item.isFinished}" @click="toggleFinish(item)">
+      {{item.label}}
+      <label class="deleteLabel" @click="deleteOne($index)">×</label>
+    </li>
+  </ul>
+</div>
+</div>
+</body>
+
+<script type="text/javascript">
+  const STORAGE_KEY = 'todos-vuejs';
+  fetch = function () {
+    return JSON.parse(window.localStorage.getItem(STORAGE_KEY) || '[]')
+  };
+  save = function (items) {
+      window.localStorage.setItem(STORAGE_KEY, JSON.stringify(items))
+  };
+  new Vue({
+    el: '#app',
+    data: function () {
+      return {
+        title: 'Todo List',
+        items: fetch(),
+        newItem: ''
+      }
+    },
+    watch: {
+      items: {
+        handler: function (items) {
+          save(items);
+        },
+        deep: true
+      },
+    },
+    methods: {
+      toggleFinish: function (item) {
+        item.isFinished = !item.isFinished;
+      },
+      addNew: function () {
+        if (this.newItem.match(/^[ ]*$/)) {
+          alert("添加内容不能为空！");
+          this.newItem = '';
+          return false;
+        }
+        this.items.unshift({
+          label: this.newItem,
+          isFinished: false
+        });
+        this.newItem = ''
+      },
+      clearAll: function () {
+        window.localStorage.clear();
+        this.items = [];
+      },
+      deleteOne: function (index) {
+        event.stopPropagation();
+        this.items.splice(index, 1);
+      }
+    }
+  });
+</script>
+</html>
