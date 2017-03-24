@@ -17,9 +17,10 @@
       <button class="clearBtn" @click="clearAll">一键清空</button>
     </div>
     <ul>
-      <li v-for="item in items" :class="{finished:item.isFinished}" @click="toggleFinish(item)">
+      <li v-for="item in items" :class="{finished:item.isFinished}" @click="toggleFinish(item)"
+      @touchstart="touchstart()" @touchmove="touchmove(item)">
         {{item.label}}
-        <label class="deleteLabel" @click="deleteOne($index)">×</label>
+        <label class="deleteLabel" v-show="item.deleteShow" @click="deleteOne($index)">×</label>
       </li>
     </ul>
   </div>
