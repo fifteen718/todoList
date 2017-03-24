@@ -67,11 +67,20 @@ new Vue({
       X = moveEndX - startX;
       Y = moveEndY - startY;
       if (Math.abs(X) > 120 && Math.abs(X) > Math.abs(Y) && X > 0) {
-        console.log("右滑事件");
-        item.deleteShow = false;
+       if(item.deleteShow == true){
+          console.log("右滑事件");
+          item.deleteShow = false;
+        };
       } else if (Math.abs(X) > 120 && Math.abs(X) > Math.abs(Y) && X < 0) {
-        console.log("左滑事件");
-        this.items[index].deleteShow = true;
+          if(item.deleteShow == false){
+          for(var i=0;i<this.items.length;i++){
+            if(this.items[i].deleteShow == true){
+              this.items[i].deleteShow = false;
+            }
+          };
+          console.log("左滑事件");
+          item.deleteShow = true;
+        }
       }
     }
   }
