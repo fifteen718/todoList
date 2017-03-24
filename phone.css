@@ -130,4 +130,5 @@ ul li:first-child {
 
 .finished {
   background-color: #DCDCDC;
+  text-decoration: line-through;
 }
