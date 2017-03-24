@@ -38,7 +38,8 @@ new Vue({
       }
       this.items.unshift({
         label: this.newItem,
-        isFinished: false
+        isFinished: false,
+        deleteShow: false
       });
       this.newItem = ''
     },
