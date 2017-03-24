@@ -47,7 +47,9 @@ new Vue({
       this.items = [];
     },
     deleteOne: function (index) {
-      event.stopPropagation();
+      if(window.event&&event.stopPropagation){
+        event.stopPropagation();
+      };
       this.items.splice(index, 1);
     }
   }
