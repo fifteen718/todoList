@@ -59,7 +59,7 @@ new Vue({
       startX = e.targetTouches[0].pageX;
       startY = e.targetTouches[0].pageY;
     },
-    touchmove: function (index, item) {
+    touchmove: function (item) {
       var e = window.event;
       // e.preventDefault();
       moveEndX = e.targetTouches[0].pageX;
@@ -67,12 +67,12 @@ new Vue({
       X = moveEndX - startX;
       Y = moveEndY - startY;
       if (Math.abs(X) > 120 && Math.abs(X) > Math.abs(Y) && X > 0) {
-       if(item.deleteShow == true){
+        if(item.deleteShow == true){
           console.log("右滑事件");
           item.deleteShow = false;
         };
       } else if (Math.abs(X) > 120 && Math.abs(X) > Math.abs(Y) && X < 0) {
-          if(item.deleteShow == false){
+        if(item.deleteShow == false){
           for(var i=0;i<this.items.length;i++){
             if(this.items[i].deleteShow == true){
               this.items[i].deleteShow = false;
