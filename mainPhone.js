@@ -51,7 +51,11 @@ new Vue({
       if (window.event && event.stopPropagation) {
         event.stopPropagation();
       }
-      this.items.splice(index, 1);
+      var self = this;
+      document.getElementById(index).style.animation="roll-out-bottom 0.6s ease-in";
+      setTimeout(function () {
+        self.items.splice(index, 1);
+      }, 605)
     },
     touchstart: function () {
       var e = window.event;
