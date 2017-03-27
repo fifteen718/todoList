@@ -132,3 +132,17 @@ ul li:first-child {
   background-color: #DCDCDC;
   text-decoration: line-through;
 }
+
+@keyframes roll-out-bottom {
+  0% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  100% {
+    -webkit-transform: translateY(1200px);
+    transform: translateY(1200px);
+    opacity: 0;
+  }
+}
