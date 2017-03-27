@@ -55,7 +55,7 @@ new Vue({
       document.getElementById(index).style.animation="roll-out-bottom 0.6s ease-in";
       setTimeout(function () {
         self.items.splice(index, 1);
-      }, 605)
+      }, 600)
     },
     touchstart: function () {
       var e = window.event;
